@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+<body>
+    <br><br><br>
+    <div class="container">
+        <h2>Questionnaire</h2>
+        {% if latest_question_list %}
+        <ul>
+         {% for question in latest_question_list %}
+         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+         {% endfor %}
+        </ul>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
